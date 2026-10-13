@@ -20,7 +20,7 @@ export const SITE = {
     "Fimbo Consultants Company is a registered Tanzanian firm offering physical and technical security consultancy, professional staff vetting, fraud investigation training and fire safety for banks, firms and institutions.",
   email: "info@fimbo.co.tz or adelbert.sugwa@fimbo.co.tz or  tzifanda@fimbo.co.tz",
   phones: [
-    { label: "+255 713 054 387 / +255 753 345 659", e164: "+255713054387" },
+    // { label: "+255 713 054 387 / +255 753 345 659", e164: "+255713054387" },
     { label: "+255 759 789 196", e164: "+255759789196" },
   ],
   whatsapp: "https://wa.me/255753345659",
@@ -454,12 +454,12 @@ export const CLIENTS = [
 ];
 
 export const TEAM = [
-  {
-    name: "Adelbert Sugwa",
-    role: "Managing Director",
-    image: "/albert-sugwa.jpeg",
-    points: [],
-  },
+  // {
+  //   name: "Adelbert Sugwa",
+  //   role: "Managing Director",
+  //   image: "/albert-sugwa.jpeg",
+  //   points: [],
+  // },
   {
     name: "Tumaini Z. Ifanda",
     role: "DPO",

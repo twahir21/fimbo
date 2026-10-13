@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import gsap from "gsap";
 import { FiAlertTriangle } from "react-icons/fi";
 
@@ -8,15 +8,22 @@ const pad = (n: number) => String(n).padStart(2, "0");
 const stamp = (d: Date) =>
   `${d.getFullYear()}/${pad(d.getMonth() + 1)}/${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
 
+function subscribeTime(callback: () => void) {
+  const id = setInterval(callback, 1000);
+  return () => clearInterval(id);
+}
+
+function getTimeSnapshot() {
+  return stamp(new Date());
+}
+
+function getServerTimeSnapshot() {
+  return "";
+}
+
 export default function CctvMonitor() {
   const root = useRef<HTMLDivElement>(null);
-  const [time, setTime] = useState("");
-
-  useEffect(() => {
-    setTime(stamp(new Date()));
-    const id = setInterval(() => setTime(stamp(new Date())), 1000);
-    return () => clearInterval(id);
-  }, []);
+  const time = useSyncExternalStore(subscribeTime, getTimeSnapshot, getServerTimeSnapshot);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;

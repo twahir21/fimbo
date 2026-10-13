@@ -4,7 +4,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import Logo from "./Logo";
 import { SERVICES, SITE } from "@/lib/site";
 
-export default function Footer() {
+export default async function Footer() {
+  "use cache";
   return (
     <footer className="border-t-4 border-signal bg-black text-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-12">

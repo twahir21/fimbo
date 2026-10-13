@@ -5,7 +5,7 @@ export default function ClientMarquee() {
   return (
     <section aria-labelledby="clients-heading" className="overflow-hidden bg-signal py-8 text-white">
       <h2 id="clients-heading" className="mx-auto mb-5 max-w-7xl px-6 text-base font-semibold md:text-lg">
-        Staff training delivered with the Police Force at banks and institutions across Tanzania
+        Our Clients
       </h2>
       <div className="flex w-max animate-marquee gap-12 whitespace-nowrap hover:[animation-play-state:paused]">
         {loop.map((name, i) => (

@@ -24,7 +24,8 @@ export default function ContactSection({ asH1 = false }: { asH1?: boolean }) {
       `${f.get("message")}`,
     ].join("\n");
     const subject = `Consultation request: ${f.get("service")}`;
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const primaryEmail = SITE.email.split(/\s+or\s+/i)[0].trim();
+    window.location.href = `mailto:${primaryEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSent(true);
   }
 
@@ -55,7 +56,14 @@ export default function ContactSection({ asH1 = false }: { asH1?: boolean }) {
             ))}
             <p className="flex gap-3">
               <FiMail className="mt-1.5 shrink-0" aria-hidden />
-              <a className="break-all underline underline-offset-4" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+              <span className="break-all">
+                {SITE.email.split(/\s+or\s+/i).map((em, idx, arr) => (
+                  <span key={em.trim()}>
+                    <a className="underline underline-offset-4" href={`mailto:${em.trim()}`}>{em.trim()}</a>
+                    {idx < arr.length - 1 && <span className="text-white/70"> or </span>}
+                  </span>
+                ))}
+              </span>
             </p>
             <p className="flex gap-3">
               <FaWhatsapp className="mt-1.5 shrink-0" aria-hidden />

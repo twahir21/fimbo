@@ -48,7 +48,14 @@ export default async function Footer() {
             ))}
             <p className="flex gap-3">
               <FiMail className="mt-1 shrink-0 text-signal-bright" />
-              <a href={`mailto:${SITE.email}`} className="break-all hover:text-white">{SITE.email}</a>
+              <span className="break-all">
+                {SITE.email.split(/\s+or\s+/i).map((em, idx, arr) => (
+                  <span key={em.trim()}>
+                    <a href={`mailto:${em.trim()}`} className="hover:text-white">{em.trim()}</a>
+                    {idx < arr.length - 1 && <span className="text-white/40"> or </span>}
+                  </span>
+                ))}
+              </span>
             </p>
             <p className="flex gap-3">
               <FaWhatsapp className="mt-1 shrink-0 text-signal-bright" />
